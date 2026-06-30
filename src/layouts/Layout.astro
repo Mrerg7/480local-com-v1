@@ -1,0 +1,245 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = '480Local.com — The premium, brandable .com domain for hyperlocal Phoenix and the 480 area code.',
+  ogImage,
+} = Astro.props;
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const canonicalURL = new URL(pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="c7nGghLFsdSx6gLybYc9q3oEypoKIHCj5QqRwMvR2ZM" />
+
+    <!-- Preconnect to CDN -->
+    <link rel="preconnect" href="https://imagedelivery.net" />
+
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <slot name="head" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 transition-shadow" id="navbar">
+      <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="flex items-center justify-between h-[72px]">
+          <div class="flex items-center gap-x-3">
+            <div class="flex items-center gap-x-2.5">
+              <div class="w-11 h-11 bg-slate-900 rounded-2xl flex items-center justify-center shadow-inner">
+                <span class="text-white font-semibold text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">480</span>
+              </div>
+              <div>
+                <span class="font-semibold text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">Local</span>
+                <span class="text-xs font-mono text-slate-400 tracking-[3px] block -mt-1">.COM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+            <a href="#why" class="text-slate-600 hover:text-slate-900 transition-colors">Why This Domain</a>
+            <a href="#opportunity" class="text-slate-600 hover:text-slate-900 transition-colors">The Opportunity</a>
+            <a href="#value" class="text-slate-600 hover:text-slate-900 transition-colors">Market Value</a>
+            <a href="#acquire" class="text-slate-600 hover:text-slate-900 transition-colors">How to Acquire</a>
+          </div>
+
+          <div class="flex items-center gap-x-3">
+            <a
+              href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
+              class="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold rounded-2xl border border-slate-300 hover:bg-slate-50 transition-all active:scale-[0.985]"
+            >
+              Make an Offer
+            </a>
+            <a
+              href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
+              class="inline-flex items-center gap-x-2 px-6 py-2.5 text-sm font-semibold bg-slate-900 hover:bg-black text-white rounded-2xl transition-all active:scale-[0.985] shadow-sm"
+            >
+              <span>Inquire Now</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100">
+      <div class="max-w-screen-2xl mx-auto px-8 py-10">
+        <!-- Domain Acquisition CTA -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-950 to-black rounded-2xl p-8 md:p-10 mb-8 text-center border border-slate-800">
+          <div class="inline-block px-4 py-1 bg-white/10 rounded-full text-xs font-medium tracking-wider text-white/70 mb-4">
+            PREMIUM DOMAIN AVAILABLE
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-3" style="font-family: 'Space Grotesk', sans-serif;">
+            Acquire 480Local.com
+          </h3>
+          <p class="text-white/60 max-w-lg mx-auto mb-6">
+            A rare, geo-targeted premium domain combining the iconic 480 area code with the highest-intent local keyword.
+            Own the definitive digital identity for everything local in Phoenix's East Valley.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
+              class="inline-flex items-center justify-center gap-x-2 px-8 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold rounded-xl transition-all active:scale-[0.985]"
+            >
+              <span>Inquire: sales@desertrich.com</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+            <button
+              id="copyEmailBtn"
+              class="inline-flex items-center justify-center gap-x-2 px-6 py-3 border border-white/20 hover:bg-white/5 text-white font-medium rounded-xl transition-all text-sm"
+              onclick="copyEmail()"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              Copy Email
+            </button>
+          </div>
+          <p class="mt-6 text-xs text-white/40">
+            Serious inquiries only. Escrow.com or equivalent recommended for secure domain transfer.
+          </p>
+        </div>
+
+        <!-- Disclaimer + Bottom -->
+        <div class="border-t border-slate-200 pt-8">
+          <p class="text-xs text-slate-400 mb-6 leading-relaxed max-w-3xl">
+            <strong>Disclaimer:</strong> This website is for demonstration and informational purposes only. It does not constitute an offer of services,
+            a commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific
+            technologies are based on publicly available information as of June 2026 and are subject to change.
+          </p>
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-y-2 text-xs text-slate-400">
+            <div>
+              <p>&copy; 2026 480Local.com &mdash; A premium domain available for acquisition.</p>
+            </div>
+            <div class="flex items-center gap-x-4">
+              <span>Geo-targeted</span>
+              <span class="hidden md:inline">&bull;</span>
+              <span>High commercial intent</span>
+              <span class="hidden md:inline">&bull;</span>
+              <span>Premium .com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function copyEmail() {
+        const email = 'sales@desertrich.com';
+        navigator.clipboard.writeText(email).then(() => {
+          const btn = document.getElementById('copyEmailBtn');
+          if (btn) {
+            const original = btn.innerHTML;
+            btn.innerHTML = '<span>Copied to clipboard!</span>';
+            btn.classList.add('bg-green-600', 'border-green-500');
+            setTimeout(() => {
+              btn.innerHTML = original;
+              btn.classList.remove('bg-green-600', 'border-green-500');
+            }, 2200);
+          }
+        }).catch(() => {
+          window.location.href = 'mailto:' + email;
+        });
+      }
+
+      // Sticky nav shadow on scroll
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (nav) {
+          if (window.scrollY > 20) {
+            nav.classList.add('shadow-sm', 'bg-white/95', 'backdrop-blur-md');
+          } else {
+            nav.classList.remove('shadow-sm', 'bg-white/95', 'backdrop-blur-md');
+          }
+        }
+      });
+
+      // Mobile menu
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+          const overlay = document.createElement('div');
+          overlay.className = 'fixed inset-0 bg-black/60 z-[100] md:hidden';
+          overlay.innerHTML = `
+            <div class="bg-white w-72 h-full p-8 shadow-2xl">
+              <div class="flex justify-between items-center mb-10">
+                <div class="flex items-center gap-x-2.5">
+                  <div class="w-9 h-9 bg-slate-900 rounded-2xl flex items-center justify-center">
+                    <span class="text-white font-semibold text-xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">480</span>
+                  </div>
+                  <span class="font-semibold text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">Local</span>
+                </div>
+                <button class="text-3xl text-slate-400 hover:text-slate-600">&times;</button>
+              </div>
+              <div class="flex flex-col gap-y-1 text-lg font-medium">
+                <a href="#why" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">Why This Domain</a>
+                <a href="#opportunity" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">The Opportunity</a>
+                <a href="#value" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">Market Value</a>
+                <a href="#acquire" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">How to Acquire</a>
+              </div>
+              <div class="mt-auto pt-8">
+                <a href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
+                   class="block w-full py-4 bg-slate-900 text-white font-semibold rounded-2xl text-sm text-center">
+                  Make an Offer
+                </a>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(overlay);
+
+          overlay.querySelector('button')!.onclick = () => overlay.remove();
+          overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+
+          overlay.querySelectorAll('a').forEach(link => {
+            link.onclick = () => {
+              overlay.remove();
+              setTimeout(() => {
+                const target = document.querySelector(link.getAttribute('href')!);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 80);
+            };
+          });
+        });
+      }
+
+      console.log('%c[480Local.com] Premium domain landing page ready.', 'color:#64748b');
+    </script>
+  </body>
+</html>

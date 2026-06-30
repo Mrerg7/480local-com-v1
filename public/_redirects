@@ -1,0 +1,3 @@
+# Cloudflare redirects — trailing slash enforcement
+# Redirect /index.html duplicates to canonical root
+/index.html  /  301

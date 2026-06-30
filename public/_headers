@@ -1,0 +1,7 @@
+# Prevent indexing of /index.html duplicate URLs
+# Cloudflare Pages serves both / and /index.html for the same content
+# X-Robots-Tag: noindex tells Google not to index the /index.html variant
+/index.html
+  X-Robots-Tag: noindex
+/*/index.html
+  X-Robots-Tag: noindex

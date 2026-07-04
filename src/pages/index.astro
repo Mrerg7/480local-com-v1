@@ -7,6 +7,7 @@ const title = '480Local.com | Premium Domain for Sale • Phoenix 480 Local Auth
 const description =
   '480Local.com — The premium, brandable .com domain for hyperlocal Phoenix and the 480 area code. Perfect for local platforms, directories, events, or instantly elevating any East Valley business. Now available.';
 const ogImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/9359f4df-e8a3-4e6a-8505-1ed0fb40f700/public';
+const heroImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/c1446cef-bfec-419d-afa1-dd4320641200/public';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -22,51 +23,77 @@ const structuredData = {
   <StructuredData slot="head" schema={structuredData} />
 
   <!-- Hero Section -->
-  <header class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white">
-    <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-20 md:pt-20 md:pb-24">
-      <div class="max-w-4xl">
-        <!-- Trust Badge -->
-        <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-8">
-          <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-          <span class="text-xs font-semibold tracking-widest uppercase">Premium Domain &bull; Available Now</span>
+  <header class="relative overflow-hidden bg-slate-950 text-white">
+    <div class="absolute inset-0 lg:hidden" aria-hidden="true">
+      <img
+        src={heroImage}
+        alt=""
+        class="h-full w-full object-cover opacity-35"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950"></div>
+    </div>
+
+    <div class="relative max-w-screen-2xl mx-auto">
+      <div class="grid lg:grid-cols-[1fr_minmax(0,44%)] xl:grid-cols-[1fr_minmax(0,48%)] lg:min-h-[34rem]">
+        <div class="px-8 pt-16 pb-20 md:pt-20 md:pb-24 lg:flex lg:flex-col lg:justify-center">
+          <div class="max-w-4xl">
+            <!-- Trust Badge -->
+            <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-8">
+              <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+              <span class="text-xs font-semibold tracking-widest uppercase">Premium Domain &bull; Available Now</span>
+            </div>
+
+            <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-6" style="font-family: 'Space Grotesk', sans-serif;">
+              480Local<span class="text-amber-400">.</span>com
+            </h1>
+
+            <p class="max-w-2xl text-2xl md:text-3xl font-light text-white/90 tracking-tight mb-10 leading-tight">
+              The most powerful, memorable domain for everything <span class="font-medium text-white">local in the 480</span>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <a
+                href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
+                class="group inline-flex items-center justify-center gap-x-3 px-9 py-4 text-lg font-semibold bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 rounded-3xl transition-all active:scale-[0.985] shadow-xl shadow-amber-900/30"
+              >
+                <span>Secure This Domain</span>
+                <svg class="w-5 h-5 group-active:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+              <a
+                href="#why"
+                class="inline-flex items-center justify-center gap-x-2 px-7 py-4 text-base font-medium border border-white/30 hover:bg-white/10 text-white rounded-3xl transition-all"
+              >
+                <span>Why it wins</span>
+              </a>
+            </div>
+
+            <div class="mt-10 flex items-center gap-x-8 text-sm">
+              <div class="flex -space-x-2">
+                <div class="w-7 h-7 bg-white/90 rounded-full ring-2 ring-slate-900"></div>
+                <div class="w-7 h-7 bg-white/80 rounded-full ring-2 ring-slate-900"></div>
+                <div class="w-7 h-7 bg-white/70 rounded-full ring-2 ring-slate-900"></div>
+              </div>
+              <div class="text-white/70 text-xs font-medium tracking-wider">
+                SERIOUS INQUIRIES FROM LOCAL BRANDS &amp; INVESTORS THIS MONTH
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-6" style="font-family: 'Space Grotesk', sans-serif;">
-          480Local<span class="text-amber-400">.</span>com
-        </h1>
-
-        <p class="max-w-2xl text-2xl md:text-3xl font-light text-white/90 tracking-tight mb-10 leading-tight">
-          The most powerful, memorable domain for everything <span class="font-medium text-white">local in the 480</span>.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <a
-            href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-            class="group inline-flex items-center justify-center gap-x-3 px-9 py-4 text-lg font-semibold bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 rounded-3xl transition-all active:scale-[0.985] shadow-xl shadow-amber-900/30"
-          >
-            <span>Secure This Domain</span>
-            <svg class="w-5 h-5 group-active:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-
-          <a
-            href="#why"
-            class="inline-flex items-center justify-center gap-x-2 px-7 py-4 text-base font-medium border border-white/30 hover:bg-white/10 text-white rounded-3xl transition-all"
-          >
-            <span>Why it wins</span>
-          </a>
-        </div>
-
-        <div class="mt-10 flex items-center gap-x-8 text-sm">
-          <div class="flex -space-x-2">
-            <div class="w-7 h-7 bg-white/90 rounded-full ring-2 ring-slate-900"></div>
-            <div class="w-7 h-7 bg-white/80 rounded-full ring-2 ring-slate-900"></div>
-            <div class="w-7 h-7 bg-white/70 rounded-full ring-2 ring-slate-900"></div>
-          </div>
-          <div class="text-white/70 text-xs font-medium tracking-wider">
-            SERIOUS INQUIRIES FROM LOCAL BRANDS &amp; INVESTORS THIS MONTH
-          </div>
+        <div class="relative hidden lg:block min-h-full" aria-hidden="true">
+          <img
+            src={heroImage}
+            alt="Phoenix East Valley skyline representing the 480 local area"
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/50 to-transparent"></div>
         </div>
       </div>
     </div>

@@ -7,7 +7,8 @@ interface Props {
 }
 
 const { title, description, ogImage, pathname } = Astro.props;
-const canonicalURL = new URL(pathname, Astro.site);
+const normalizedPathname = pathname.endsWith('/') ? pathname : pathname + '/';
+const canonicalURL = new URL(normalizedPathname, Astro.site);
 ---
 
 <meta name="title" content={title} />

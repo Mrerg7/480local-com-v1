@@ -3,6 +3,6 @@ Allow: /
 Disallow: /admin/
 Disallow: /.well-known/
 
-Sitemap: https://480local.com/sitemap.xml
+Sitemap: https://480local.com/sitemap-index.xml
 
 Crawl-delay: 1

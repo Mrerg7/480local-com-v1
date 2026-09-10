@@ -1,9 +1,13 @@
 name = "480local-com-v1"
+main = "src/worker.ts"
 compatibility_date = "2026-06-30"
 workers_dev = false
 preview_urls = false
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
 not_found_handling = "404-page"
 html_handling = "force-trailing-slash"
+# Required so www→apex runs before static HTML is served at the edge
+run_worker_first = true

@@ -20,7 +20,9 @@ const canonicalURL = new URL(pathname, Astro.site);
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href="/sitemap-index.xml" type="application/xml" />
@@ -43,18 +45,18 @@ const canonicalURL = new URL(pathname, Astro.site);
 
     <slot name="head" />
   </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
+  <body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden">
     <!-- Navigation -->
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 transition-shadow" id="navbar">
-      <div class="max-w-screen-2xl mx-auto px-8">
-        <div class="flex items-center justify-between h-[72px]">
-          <div class="flex items-center gap-x-3">
-            <div class="flex items-center gap-x-2.5">
-              <div class="w-11 h-11 bg-slate-900 rounded-2xl flex items-center justify-center shadow-inner">
-                <span class="text-white font-semibold text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">480</span>
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-[72px]">
+          <div class="flex items-center gap-x-3 min-w-0">
+            <div class="flex items-center gap-x-2.5 min-w-0">
+              <div class="w-10 h-10 sm:w-11 sm:h-11 shrink-0 bg-slate-900 rounded-2xl flex items-center justify-center shadow-inner">
+                <span class="text-white font-semibold text-xl sm:text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">480</span>
               </div>
-              <div>
-                <span class="font-semibold text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">Local</span>
+              <div class="min-w-0">
+                <span class="font-semibold text-xl sm:text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">Local</span>
                 <span class="text-xs font-mono text-slate-400 tracking-[3px] block -mt-1">.COM</span>
               </div>
             </div>
@@ -68,7 +70,7 @@ const canonicalURL = new URL(pathname, Astro.site);
             <a href="#acquire" class="text-slate-600 hover:text-slate-900 transition-colors">How to Acquire</a>
           </div>
 
-          <div class="flex items-center gap-x-3">
+          <div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
             <a
               href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
               class="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold rounded-2xl border border-slate-300 hover:bg-slate-50 transition-all active:scale-[0.985]"
@@ -77,14 +79,19 @@ const canonicalURL = new URL(pathname, Astro.site);
             </a>
             <a
               href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-              class="inline-flex items-center gap-x-2 px-6 py-2.5 text-sm font-semibold bg-slate-900 hover:bg-black text-white rounded-2xl transition-all active:scale-[0.985] shadow-sm"
+              class="inline-flex items-center gap-x-2 px-4 sm:px-6 py-2.5 text-sm font-semibold bg-slate-900 hover:bg-black text-white rounded-2xl transition-all active:scale-[0.985] shadow-sm"
             >
               <span>Inquire Now</span>
             </a>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button
+              id="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -99,26 +106,27 @@ const canonicalURL = new URL(pathname, Astro.site);
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-100">
-      <div class="max-w-screen-2xl mx-auto px-8 py-10">
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-10">
         <!-- Domain Acquisition CTA -->
-        <div class="bg-gradient-to-r from-slate-900 via-slate-950 to-black rounded-2xl p-8 md:p-10 mb-8 text-center border border-slate-800">
+        <div class="bg-gradient-to-r from-slate-900 via-slate-950 to-black rounded-2xl p-6 sm:p-8 md:p-10 mb-8 text-center border border-slate-800">
           <div class="inline-block px-4 py-1 bg-white/10 rounded-full text-xs font-medium tracking-wider text-white/70 mb-4">
             PREMIUM DOMAIN AVAILABLE
           </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-3" style="font-family: 'Space Grotesk', sans-serif;">
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3" style="font-family: 'Space Grotesk', sans-serif;">
             Acquire 480Local.com
           </h3>
-          <p class="text-white/60 max-w-lg mx-auto mb-6">
+          <p class="text-white/60 max-w-lg mx-auto mb-6 text-sm sm:text-base">
             A rare, geo-targeted premium domain combining the iconic 480 area code with the highest-intent local keyword.
             Own the definitive digital identity for everything local in Phoenix's East Valley.
           </p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full max-w-md sm:max-w-none mx-auto">
             <a
               href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-              class="inline-flex items-center justify-center gap-x-2 px-8 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold rounded-xl transition-all active:scale-[0.985]"
+              class="inline-flex items-center justify-center gap-x-2 px-5 sm:px-8 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold rounded-xl transition-all active:scale-[0.985] text-sm sm:text-base break-all sm:break-normal"
             >
-              <span>Inquire: sales@desertrich.com</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span class="sm:hidden">Email sales@desertrich.com</span>
+              <span class="hidden sm:inline">Inquire: sales@desertrich.com</span>
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </a>

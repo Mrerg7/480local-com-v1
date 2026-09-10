@@ -4,5 +4,3 @@ Disallow: /admin/
 Disallow: /.well-known/
 
 Sitemap: https://480local.com/sitemap-index.xml
-
-Crawl-delay: 1

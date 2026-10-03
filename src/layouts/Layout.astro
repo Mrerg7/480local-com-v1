@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = '480Local.com — The premium, brandable .com domain for hyperlocal Phoenix and the 480 area code.',
+  description = '480Local.com for sale — premium 480 area code domain. All serious offers considered. Secure via Escrow.com. Inquire now, response within 24 hours.',
   ogImage,
 } = Astro.props;
 const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
@@ -21,21 +21,38 @@ const canonicalURL = new URL(pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href="/sitemap-index.xml" type="application/xml" />
 
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="RIwhOlGuCNQnRWlIo6liHKbqSSYdHE3T4glbf2Igfog" />
 
-    <!-- Preconnect to CDN -->
-    <link rel="preconnect" href="https://imagedelivery.net" />
+    <!-- Performance: early connections only (no render-blocking JS) -->
+    <link rel="preconnect" href="https://imagedelivery.net" crossorigin />
+    <link rel="dns-prefetch" href="https://imagedelivery.net" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Avoid dark-mode flash: runs before paint, <1KB -->
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('480local-theme');
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    </script>
 
     <title>{title}</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (display=swap = no invisible text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,53 +60,76 @@ const canonicalURL = new URL(pathname, Astro.site);
       rel="stylesheet"
     />
 
+    <!-- Cloudflare Web Analytics (free, privacy-first). Replace token after enabling in dashboard. -->
+    <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"REPLACE_WITH_TOKEN"}'></script> -->
+
     <slot name="head" />
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden">
+    <a href="#main" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 transition-shadow" id="navbar">
+    <nav id="site-nav" class="bg-white border-b border-slate-200 sticky top-0 z-50 transition-shadow" aria-label="Primary">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-8">
         <div class="flex items-center justify-between h-16 sm:h-[72px]">
-          <div class="flex items-center gap-x-3 min-w-0">
-            <div class="flex items-center gap-x-2.5 min-w-0">
-              <div class="w-10 h-10 sm:w-11 sm:h-11 shrink-0 bg-slate-900 rounded-2xl flex items-center justify-center shadow-inner">
+          <a href="#top" class="flex items-center gap-x-3 min-w-0 rounded-xl" aria-label="480Local.com — back to top">
+            <span class="flex items-center gap-x-2.5 min-w-0">
+              <span class="w-10 h-10 sm:w-11 sm:h-11 shrink-0 bg-slate-900 rounded-2xl flex items-center justify-center shadow-inner">
                 <span class="text-white font-semibold text-xl sm:text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">480</span>
-              </div>
-              <div class="min-w-0">
+              </span>
+              <span class="min-w-0">
                 <span class="font-semibold text-xl sm:text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">Local</span>
                 <span class="text-xs font-mono text-slate-400 tracking-[3px] block -mt-1">.COM</span>
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </a>
 
           <!-- Desktop Nav -->
           <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
-            <a href="#why" class="text-slate-600 hover:text-slate-900 transition-colors">Why This Domain</a>
-            <a href="#opportunity" class="text-slate-600 hover:text-slate-900 transition-colors">The Opportunity</a>
-            <a href="#value" class="text-slate-600 hover:text-slate-900 transition-colors">Market Value</a>
-            <a href="#acquire" class="text-slate-600 hover:text-slate-900 transition-colors">How to Acquire</a>
+            <a href="#why" class="text-slate-600 hover:text-slate-900 transition-colors py-3">Why This Domain</a>
+            <a href="#opportunity" class="text-slate-600 hover:text-slate-900 transition-colors py-3">The Opportunity</a>
+            <a href="#value" class="text-slate-600 hover:text-slate-900 transition-colors py-3">Market Value</a>
+            <a href="#faq" class="text-slate-600 hover:text-slate-900 transition-colors py-3">FAQ</a>
+            <a href="#acquire" class="text-slate-600 hover:text-slate-900 transition-colors py-3">How to Acquire</a>
           </div>
 
           <div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
+            <button
+              id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="w-12 h-12 inline-flex items-center justify-center rounded-2xl border border-slate-300 hover:bg-slate-50 transition-all"
+            >
+              <svg id="theme-icon-sun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <svg id="theme-icon-moon" class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
             <a
               href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-              class="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold rounded-2xl border border-slate-300 hover:bg-slate-50 transition-all active:scale-[0.985]"
+              data-track="nav-make-offer"
+              class="hidden sm:inline-flex items-center px-5 py-2.5 min-h-[48px] text-sm font-semibold rounded-2xl border border-slate-300 hover:bg-slate-50 transition-all active:scale-[0.985]"
             >
               Make an Offer
             </a>
             <a
-              href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-              class="inline-flex items-center gap-x-2 px-4 sm:px-6 py-2.5 text-sm font-semibold bg-slate-900 hover:bg-black text-white rounded-2xl transition-all active:scale-[0.985] shadow-sm"
+              href="#offer"
+              data-track="nav-inquire"
+              class="inline-flex items-center gap-x-2 px-4 sm:px-6 py-2.5 min-h-[48px] text-sm font-semibold bg-slate-900 hover:bg-black text-white rounded-2xl transition-all active:scale-[0.985] shadow-sm"
             >
               <span>Inquire Now</span>
             </a>
 
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Menu Button (48px target) -->
             <button
               id="mobile-menu-btn"
               type="button"
               aria-label="Open menu"
-              class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="md:hidden w-12 h-12 inline-flex items-center justify-center text-slate-600 hover:text-slate-900 rounded-2xl"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -100,7 +140,7 @@ const canonicalURL = new URL(pathname, Astro.site);
       </div>
     </nav>
 
-    <main>
+    <main id="main">
       <slot />
     </main>
 
@@ -112,30 +152,31 @@ const canonicalURL = new URL(pathname, Astro.site);
           <div class="inline-block px-4 py-1 bg-white/10 rounded-full text-xs font-medium tracking-wider text-white/70 mb-4">
             PREMIUM DOMAIN AVAILABLE
           </div>
-          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3" style="font-family: 'Space Grotesk', sans-serif;">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3" style="font-family: 'Space Grotesk', sans-serif;">
             Acquire 480Local.com
-          </h3>
-          <p class="text-white/60 max-w-lg mx-auto mb-6 text-sm sm:text-base">
+          </h2>
+          <p class="text-white/60 max-w-lg mx-auto mb-6 text-base">
             A rare, geo-targeted premium domain combining the iconic 480 area code with the highest-intent local keyword.
             Own the definitive digital identity for everything local in Phoenix's East Valley.
           </p>
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full max-w-md sm:max-w-none mx-auto">
             <a
               href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-              class="inline-flex items-center justify-center gap-x-2 px-5 sm:px-8 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold rounded-xl transition-all active:scale-[0.985] text-sm sm:text-base break-all sm:break-normal"
+              data-track="footer-inquire"
+              class="inline-flex items-center justify-center gap-x-2 px-5 sm:px-8 py-3 min-h-[48px] bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold rounded-xl transition-all active:scale-[0.985] text-base break-all sm:break-normal"
             >
               <span class="sm:hidden">Email sales@desertrich.com</span>
               <span class="hidden sm:inline">Inquire: sales@desertrich.com</span>
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </a>
             <button
               id="copyEmailBtn"
-              class="inline-flex items-center justify-center gap-x-2 px-6 py-3 border border-white/20 hover:bg-white/5 text-white font-medium rounded-xl transition-all text-sm"
-              onclick="copyEmail()"
+              type="button"
+              class="inline-flex items-center justify-center gap-x-2 px-6 py-3 min-h-[48px] border border-white/20 hover:bg-white/5 text-white font-medium rounded-xl transition-all text-sm"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
               Copy Email
@@ -145,6 +186,18 @@ const canonicalURL = new URL(pathname, Astro.site);
             Serious inquiries only. Escrow.com or equivalent recommended for secure domain transfer.
           </p>
         </div>
+
+        <!-- Internal linking (SEO) -->
+        <nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500 mb-8">
+          <a href="#why" class="hover:text-slate-900 py-2">Why This Domain</a>
+          <a href="#opportunity" class="hover:text-slate-900 py-2">The Opportunity</a>
+          <a href="#value" class="hover:text-slate-900 py-2">Market Value</a>
+          <a href="#sales" class="hover:text-slate-900 py-2">Comparable Sales</a>
+          <a href="#faq" class="hover:text-slate-900 py-2">FAQ</a>
+          <a href="#acquire" class="hover:text-slate-900 py-2">How to Acquire</a>
+          <a href="#offer" class="hover:text-slate-900 py-2">Make an Offer</a>
+          <a href="/sitemap-index.xml" class="hover:text-slate-900 py-2">Sitemap</a>
+        </nav>
 
         <!-- Disclaimer + Bottom -->
         <div class="border-t border-slate-200 pt-8">
@@ -169,45 +222,120 @@ const canonicalURL = new URL(pathname, Astro.site);
       </div>
     </footer>
 
-    <script>
+    <script is:inline>
+      // Copy email (progressive enhancement, no dependency)
       function copyEmail() {
         const email = 'sales@desertrich.com';
-        navigator.clipboard.writeText(email).then(() => {
-          const btn = document.getElementById('copyEmailBtn');
-          if (btn) {
-            const original = btn.innerHTML;
-            btn.innerHTML = '<span>Copied to clipboard!</span>';
-            btn.classList.add('bg-green-600', 'border-green-500');
-            setTimeout(() => {
-              btn.innerHTML = original;
-              btn.classList.remove('bg-green-600', 'border-green-500');
-            }, 2200);
-          }
-        }).catch(() => {
+        const btn = document.getElementById('copyEmailBtn');
+        const done = () => {
+          if (!btn) return;
+          const original = btn.innerHTML;
+          btn.innerHTML = '<span>Copied to clipboard!</span>';
+          btn.classList.add('bg-green-600', 'border-green-500');
+          setTimeout(() => {
+            btn.innerHTML = original;
+            btn.classList.remove('bg-green-600', 'border-green-500');
+          }, 2200);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(done).catch(() => {
+            window.location.href = 'mailto:' + email;
+          });
+        } else {
           window.location.href = 'mailto:' + email;
-        });
-      }
-
-      // Sticky nav shadow on scroll
-      window.addEventListener('scroll', () => {
-        const nav = document.getElementById('navbar');
-        if (nav) {
-          if (window.scrollY > 20) {
-            nav.classList.add('shadow-sm', 'bg-white/95', 'backdrop-blur-md');
-          } else {
-            nav.classList.remove('shadow-sm', 'bg-white/95', 'backdrop-blur-md');
-          }
         }
+      }
+      document.getElementById('copyEmailBtn')?.addEventListener('click', copyEmail);
+
+      // Sticky nav shadow on scroll (passive = no scroll jank)
+      const nav = document.getElementById('site-nav');
+      const onScroll = () => {
+        if (!nav) return;
+        const on = window.scrollY > 20;
+        nav.classList.toggle('shadow-sm', on);
+        nav.classList.toggle('bg-white/95', on);
+        nav.classList.toggle('backdrop-blur-md', on);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Theme toggle (persisted, respects OS default)
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const dark = document.documentElement.classList.toggle('dark');
+        try {
+          localStorage.setItem('480local-theme', dark ? 'dark' : 'light');
+        } catch (e) {}
       });
 
-      // Mobile menu
+      // Scroll-reveal (respects prefers-reduced-motion, disconnects when done)
+      (() => {
+        if (!('IntersectionObserver' in window)) {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      })();
+
+      // CTA tracking pixels (free: local log + sendBeacon hook for CF Web Analytics)
+      document.querySelectorAll('[data-track]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const name = el.getAttribute('data-track') || 'cta';
+          try {
+            const key = '480local-events';
+            const raw = localStorage.getItem(key);
+            const arr = raw ? JSON.parse(raw) : [];
+            arr.push({ e: name, t: Date.now() });
+            localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+          } catch (e) {}
+          if (navigator.sendBeacon) {
+            try {
+              navigator.sendBeacon('/api/track', JSON.stringify({ event: name }));
+            } catch (e) {}
+          }
+        });
+      });
+
+      // Mobile menu (accessible: aria-expanded, Esc to close, 48px targets)
       const menuBtn = document.getElementById('mobile-menu-btn');
       if (menuBtn) {
+        let overlay = null;
+        const close = () => {
+          overlay?.remove();
+          overlay = null;
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuBtn.setAttribute('aria-label', 'Open menu');
+          document.body.style.overflow = '';
+        };
         menuBtn.addEventListener('click', () => {
-          const overlay = document.createElement('div');
+          if (overlay) {
+            close();
+            return;
+          }
+          menuBtn.setAttribute('aria-expanded', 'true');
+          menuBtn.setAttribute('aria-label', 'Close menu');
+          overlay = document.createElement('div');
+          overlay.id = 'mobile-menu';
           overlay.className = 'fixed inset-0 bg-black/60 z-[100] md:hidden';
+          overlay.setAttribute('role', 'dialog');
+          overlay.setAttribute('aria-label', 'Site menu');
           overlay.innerHTML = `
-            <div class="bg-white w-72 h-full p-8 shadow-2xl">
+            <div class="bg-white w-72 max-w-[85vw] h-full p-8 shadow-2xl flex flex-col">
               <div class="flex justify-between items-center mb-10">
                 <div class="flex items-center gap-x-2.5">
                   <div class="w-9 h-9 bg-slate-900 rounded-2xl flex items-center justify-center">
@@ -215,32 +343,41 @@ const canonicalURL = new URL(pathname, Astro.site);
                   </div>
                   <span class="font-semibold text-2xl tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">Local</span>
                 </div>
-                <button class="text-3xl text-slate-400 hover:text-slate-600">&times;</button>
+                <button type="button" aria-label="Close menu" class="w-12 h-12 inline-flex items-center justify-center text-3xl text-slate-400 hover:text-slate-600">&times;</button>
               </div>
               <div class="flex flex-col gap-y-1 text-lg font-medium">
-                <a href="#why" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">Why This Domain</a>
-                <a href="#opportunity" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">The Opportunity</a>
-                <a href="#value" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">Market Value</a>
-                <a href="#acquire" class="py-3 px-1 text-slate-700 hover:text-slate-900 border-b border-slate-100">How to Acquire</a>
+                <a href="#why" class="py-3 px-1 min-h-[48px] inline-flex items-center text-slate-700 hover:text-slate-900 border-b border-slate-100">Why This Domain</a>
+                <a href="#opportunity" class="py-3 px-1 min-h-[48px] inline-flex items-center text-slate-700 hover:text-slate-900 border-b border-slate-100">The Opportunity</a>
+                <a href="#value" class="py-3 px-1 min-h-[48px] inline-flex items-center text-slate-700 hover:text-slate-900 border-b border-slate-100">Market Value</a>
+                <a href="#faq" class="py-3 px-1 min-h-[48px] inline-flex items-center text-slate-700 hover:text-slate-900 border-b border-slate-100">FAQ</a>
+                <a href="#acquire" class="py-3 px-1 min-h-[48px] inline-flex items-center text-slate-700 hover:text-slate-900 border-b border-slate-100">How to Acquire</a>
               </div>
               <div class="mt-auto pt-8">
-                <a href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-                   class="block w-full py-4 bg-slate-900 text-white font-semibold rounded-2xl text-sm text-center">
+                <a href="#offer"
+                   class="flex w-full py-4 min-h-[48px] items-center justify-center bg-slate-900 text-white font-semibold rounded-2xl text-sm text-center">
                   Make an Offer
                 </a>
               </div>
             </div>
           `;
           document.body.appendChild(overlay);
+          document.body.style.overflow = 'hidden';
 
-          overlay.querySelector('button')!.onclick = () => overlay.remove();
-          overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+          overlay.querySelector('button').onclick = close;
+          overlay.onclick = (e) => { if (e.target === overlay) close(); };
+          document.addEventListener('keydown', function esc(e) {
+            if (e.key === 'Escape') {
+              close();
+              document.removeEventListener('keydown', esc);
+            }
+          });
 
           overlay.querySelectorAll('a').forEach(link => {
             link.onclick = () => {
-              overlay.remove();
+              const href = link.getAttribute('href');
+              close();
               setTimeout(() => {
-                const target = document.querySelector(link.getAttribute('href')!);
+                const target = href && document.querySelector(href);
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }, 80);
             };

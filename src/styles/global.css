@@ -13,20 +13,89 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
+
+  /* Readable minimum + accessible focus everywhere (mobile + keyboard) */
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Skip link for keyboard / screen-reader users */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    z-index: 200;
+    background: #0f172a;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Defer offscreen rendering cost without layout shift */
+  section[id] {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+  header,
+  #site-nav {
+    content-visibility: visible;
+  }
+}
+
+/* Dark mode (class strategy, free + no extra JS libs) */
+.dark body,
+.dark .bg-white {
+  background-color: #0f172a;
+}
+.dark .bg-slate-50 {
+  background-color: #020617;
+}
+.dark .text-slate-900,
+.dark .text-slate-700 {
+  color: #f1f5f9;
+}
+.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #94a3b8;
+}
+.dark .border-slate-200 {
+  border-color: #1e293b;
+}
+.dark .bg-slate-100 {
+  background-color: #1e293b;
 }
 
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center gap-x-3 px-9 py-4 bg-[#0F172A] hover:bg-black text-white font-semibold text-lg rounded-3xl transition-all active:scale-[0.985] shadow-lg shadow-slate-900/20;
+    min-height: 48px;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-8 py-4 border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-lg rounded-3xl transition-all;
+    min-height: 48px;
   }
 
   .btn-accent {
     @apply inline-flex items-center justify-center gap-x-3 px-9 py-4 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-semibold text-lg rounded-3xl transition-all active:scale-[0.985] shadow-lg shadow-amber-900/30;
+    min-height: 48px;
   }
 
   .section {
@@ -47,5 +116,47 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     }
+  }
+
+  /* Scroll-triggered fade-ins (JS adds .is-visible; no library) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Touch targets: never smaller than 48px on coarse pointers */
+  @media (pointer: coarse) {
+    a,
+    button {
+      min-height: 44px;
+    }
+    nav a,
+    nav button {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

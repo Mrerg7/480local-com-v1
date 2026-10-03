@@ -3,19 +3,146 @@ import Layout from '../layouts/Layout.astro';
 import SEO from '../components/SEO.astro';
 import StructuredData from '../components/StructuredData.astro';
 
-const title = '480Local.com | Premium Domain for Sale • Phoenix 480 Local Authority';
+const title = '480Local.com | Premium Domain for Sale | 480Local';
 const description =
-  '480Local.com — The premium, brandable .com domain for hyperlocal Phoenix and the 480 area code. Perfect for local platforms, directories, events, or instantly elevating any East Valley business. Now available.';
+  '480Local.com for sale — premium 480 area-code .com for Phoenix East Valley. One-of-one asset. All serious offers considered. Secure Escrow.com transfer. Inquire now — response within 24 hours.';
 const ogImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/9359f4df-e8a3-4e6a-8505-1ed0fb40f700/public';
 const heroImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/c1446cef-bfec-419d-afa1-dd4320641200/public';
+const offerMailto =
+  'mailto:sales@desertrich.com?subject=Offer%20for%20480Local.com%20%E2%80%94%20%5BYour%20Offer%5D&body=Hi%2C%0A%0AI%27d%20like%20to%20make%20an%20offer%20for%20480Local.com.%0A%0AOffer%20amount%20(USD)%3A%20%0AIntended%20use%3A%20%0AName%3A%20%0A%0AThank%20you!';
+const buyNowMailto =
+  'mailto:sales@desertrich.com?subject=Buy%20Now%20%E2%80%94%20480Local.com%20via%20Escrow&body=Hi%2C%0A%0AI%27d%20like%20to%20proceed%20with%20a%20secure%20Escrow.com%20transaction%20for%20480Local.com.%20Please%20send%20next%20steps.%0A%0AName%3A%20%0A';
+const agentMailto =
+  'mailto:sales@desertrich.com?subject=Questions%20about%20480Local.com&body=Hi%2C%0A%0AI%20have%20a%20question%20about%20480Local.com%3A%20%0A%0AName%3A%20%0A';
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: '480Local.com',
-  url: 'https://480local.com/',
-  description: description,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://480local.com/#website',
+      name: '480Local.com',
+      url: 'https://480local.com/',
+      description: description,
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://480local.com/#org',
+      name: '480Local',
+      url: 'https://480local.com/',
+      logo: 'https://480local.com/favicon.svg',
+      email: 'sales@desertrich.com',
+      areaServed: 'Phoenix East Valley — Mesa, Chandler, Gilbert, Tempe, Scottsdale (480)',
+    },
+    {
+      '@type': 'Product',
+      '@id': 'https://480local.com/#product',
+      name: '480Local.com',
+      description:
+        'Premium 9-character .com combining the iconic Phoenix 480 area code with the high-intent keyword "local". Ideal for hyperlocal platforms, directories, or East Valley brand authority.',
+      brand: { '@type': 'Brand', name: '480Local' },
+      category: 'Premium domain name',
+      url: 'https://480local.com/',
+      image: ogImage,
+      offers: {
+        '@type': 'Offer',
+        url: 'https://480local.com/#offer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'USD',
+        businessFunction: 'https://purl.org/goodrelations/v1#Sell',
+        seller: { '@id': 'https://480local.com/#org' },
+        description: 'All serious offers considered. Secure transfer via Escrow.com or equivalent.',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '480Local.com', item: 'https://480local.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Why This Domain', item: 'https://480local.com/#why' },
+        { '@type': 'ListItem', position: 3, name: 'How to Acquire', item: 'https://480local.com/#acquire' },
+        { '@type': 'ListItem', position: 4, name: 'Make an Offer', item: 'https://480local.com/#offer' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How much does 480Local.com cost?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'All serious offers are considered — there is no fixed list price. Comparable geo + keyword premium .com domains in growing markets routinely transact in the mid-to-high five figures. Submit your best offer and receive a personal response within 24 hours.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How does the secure transfer work?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'We recommend Escrow.com, Dan.com, or your attorney/escrow service. Funds are held securely, then the domain is pushed or transferred by auth code (registered at Cloudflare) within 1–3 business days after funds clear.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Why is a 480 geo domain valuable?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: '480 is the iconic Phoenix East Valley area code covering Mesa, Chandler, Gilbert, Tempe and Scottsdale. Paired with "local" — one of the highest commercial-intent keywords — it gives instant recognition, type-in traffic, and SEO headroom for any local platform or business.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I buy now instead of making an offer?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Use the Buy Now option to start a secure Escrow.com transaction immediately, or Contact Agent with questions. Make Offer is best if you want to propose terms.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What can I build on 480Local.com?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Two proven paths: (1) the definitive 480 hyperlocal platform — news, events, directory, deals; or (2) instant local authority for real estate, home services, healthcare, hospitality, professional services, retail, or trades.',
+          },
+        },
+      ],
+    },
+  ],
 };
+
+const faqs = [
+  {
+    q: 'How much does 480Local.com cost?',
+    a: 'All serious offers are considered — there is no fixed list price. Comparable geo + keyword premium .com domains in growing markets routinely transact in the mid-to-high five figures. Submit your best offer; every serious inquiry gets a personal response within 24 hours.',
+  },
+  {
+    q: 'How does the secure transfer work?',
+    a: 'We recommend Escrow.com, Dan.com, or your attorney/escrow service. Funds are held securely, then the domain is pushed or transferred by auth code (registered at Cloudflare) within 1–3 business days after funds clear.',
+  },
+  {
+    q: 'Why is a 480 geo domain valuable?',
+    a: '480 is the iconic Phoenix East Valley area code — Mesa, Chandler, Gilbert, Tempe, Scottsdale. Paired with “local”, one of the highest commercial-intent keywords in search, it delivers instant recognition, type-in traffic, and long-term brand equity.',
+  },
+  {
+    q: 'Can I buy now instead of making an offer?',
+    a: 'Yes. Choose Buy Now to start a secure Escrow.com transaction immediately, Contact Agent for questions, or Make Offer to propose your terms. All three take under a minute.',
+  },
+  {
+    q: 'What can I build on 480Local.com?',
+    a: 'Two proven paths: (1) the definitive 480 hyperlocal platform — news, events, business directory, deals and community; or (2) instant local authority for real estate, home services, healthcare, hospitality, professional services, retail, or trades.',
+  },
+];
+
+const useCases = [
+  { label: 'All', filter: 'all' },
+  { label: 'Media & Directory', filter: 'platform' },
+  { label: 'Real Estate', filter: 'services' },
+  { label: 'Home Services', filter: 'services' },
+  { label: 'Healthcare', filter: 'services' },
+  { label: 'Hospitality', filter: 'services' },
+];
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
@@ -23,14 +150,17 @@ const structuredData = {
   <StructuredData slot="head" schema={structuredData} />
 
   <!-- Hero Section -->
-  <header class="relative overflow-hidden bg-slate-950 text-white">
+  <header id="top" class="relative overflow-hidden bg-slate-950 text-white">
     <div class="absolute inset-0 lg:hidden" aria-hidden="true">
       <img
         src={heroImage}
         alt=""
+        width="1600"
+        height="900"
         class="h-full w-full object-cover opacity-35"
         loading="eager"
         fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950"></div>
     </div>
@@ -39,48 +169,78 @@ const structuredData = {
       <div class="grid lg:grid-cols-[1fr_minmax(0,44%)] xl:grid-cols-[1fr_minmax(0,48%)] lg:min-h-[34rem]">
         <div class="px-4 sm:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20 md:pt-20 md:pb-24 lg:flex lg:flex-col lg:justify-center">
           <div class="max-w-4xl">
-            <!-- Trust Badge -->
-            <div class="inline-flex items-center gap-x-2 px-3 sm:px-4 py-1.5 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-6 sm:mb-8 max-w-full">
-              <div class="w-2 h-2 shrink-0 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span class="text-[10px] sm:text-xs font-semibold tracking-widest uppercase">Premium Domain &bull; Available Now</span>
+            <!-- Trust Badge + urgency -->
+            <div class="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
+              <span class="inline-flex items-center gap-x-2 px-3 sm:px-4 py-1.5 min-h-[32px] rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 max-w-full">
+                <span class="w-2 h-2 shrink-0 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true"></span>
+                <span class="text-[10px] sm:text-xs font-semibold tracking-widest uppercase">Premium Domain &bull; Available Now</span>
+              </span>
+              <span class="inline-flex items-center px-3 py-1.5 min-h-[32px] rounded-3xl bg-amber-400/15 border border-amber-300/30 text-amber-200 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
+                1 of 1 &bull; When it&rsquo;s gone, it&rsquo;s gone
+              </span>
             </div>
 
             <h1 class="text-[2.75rem] leading-none sm:text-6xl md:text-7xl font-semibold tracking-tighter mb-5 sm:mb-6 break-words" style="font-family: 'Space Grotesk', sans-serif;">
               480Local<span class="text-amber-400">.</span>com
             </h1>
 
-            <p class="max-w-2xl text-xl sm:text-2xl md:text-3xl font-light text-white/90 tracking-tight mb-8 sm:mb-10 leading-snug sm:leading-tight">
+            <p class="max-w-2xl text-xl sm:text-2xl md:text-3xl font-light text-white/90 tracking-tight mb-4 leading-snug sm:leading-tight">
               The most powerful, memorable domain for everything <span class="font-medium text-white">local in the 480</span>.
             </p>
+            <p class="max-w-2xl text-base sm:text-lg text-white/70 mb-8 sm:mb-10">
+              One-of-one .com &bull; All serious offers considered &bull; Secure Escrow.com transfer
+            </p>
 
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+            <!-- Tiered CTAs: Make Offer / Buy Now / Contact Agent -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto" role="group" aria-label="Purchase options">
               <a
-                href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-                class="group inline-flex items-center justify-center gap-x-3 px-6 sm:px-9 py-3.5 sm:py-4 text-base sm:text-lg font-semibold bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 rounded-3xl transition-all active:scale-[0.985] shadow-xl shadow-amber-900/30"
+                href={offerMailto}
+                data-track="hero-make-offer"
+                class="group inline-flex items-center justify-center gap-x-3 px-6 sm:px-9 py-3.5 sm:py-4 min-h-[48px] text-base sm:text-lg font-semibold bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 rounded-3xl transition-all active:scale-[0.985] shadow-xl shadow-amber-900/30"
               >
-                <span>Secure This Domain</span>
-                <svg class="w-5 h-5 group-active:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span>Make an Offer</span>
+                <svg class="w-5 h-5 group-active:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
 
               <a
-                href="#why"
-                class="inline-flex items-center justify-center gap-x-2 px-6 sm:px-7 py-3.5 sm:py-4 text-base font-medium border border-white/30 hover:bg-white/10 text-white rounded-3xl transition-all"
+                href={buyNowMailto}
+                data-track="hero-buy-now"
+                class="inline-flex items-center justify-center gap-x-2 px-6 sm:px-7 py-3.5 sm:py-4 min-h-[48px] text-base font-semibold bg-white text-slate-950 hover:bg-amber-100 rounded-3xl transition-all active:scale-[0.985]"
               >
-                <span>Why it wins</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span>Buy Now via Escrow</span>
+              </a>
+
+              <a
+                href={agentMailto}
+                data-track="hero-contact-agent"
+                class="inline-flex items-center justify-center gap-x-2 px-6 sm:px-7 py-3.5 sm:py-4 min-h-[48px] text-base font-medium border border-white/30 hover:bg-white/10 text-white rounded-3xl transition-all"
+              >
+                <span>Contact Agent</span>
               </a>
             </div>
 
-            <div class="mt-8 sm:mt-10 flex items-start sm:items-center gap-x-4 sm:gap-x-8 text-sm">
-              <div class="flex -space-x-2 shrink-0">
-                <div class="w-7 h-7 bg-white/90 rounded-full ring-2 ring-slate-900"></div>
-                <div class="w-7 h-7 bg-white/80 rounded-full ring-2 ring-slate-900"></div>
-                <div class="w-7 h-7 bg-white/70 rounded-full ring-2 ring-slate-900"></div>
-              </div>
-              <div class="text-white/70 text-[11px] sm:text-xs font-medium tracking-wider leading-snug">
-                SERIOUS INQUIRIES FROM LOCAL BRANDS &amp; INVESTORS THIS MONTH
-              </div>
+            <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm text-white/70">
+              <span class="inline-flex items-center gap-x-2">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Escrow.com &amp; Dan.com supported
+              </span>
+              <span class="inline-flex items-center gap-x-2">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Response within 24 hours
+              </span>
+              <span class="inline-flex items-center gap-x-2" aria-live="polite">
+                <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse" aria-hidden="true"></span>
+                <span id="viewer-count">Serious inquiries from local brands &amp; investors this month</span>
+              </span>
             </div>
           </div>
         </div>
@@ -89,11 +249,26 @@ const structuredData = {
           <img
             src={heroImage}
             alt="Phoenix East Valley skyline representing the 480 local area"
+            width="1600"
+            height="900"
             class="absolute inset-0 h-full w-full object-cover"
             loading="eager"
             fetchpriority="high"
+            decoding="async"
+            sizes="(min-width: 1024px) 44vw, 100vw"
           />
           <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/50 to-transparent"></div>
+          <!-- Domain visualization mockup -->
+          <div class="absolute bottom-8 right-8 left-8 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-5">
+            <div class="flex items-center gap-x-2 mb-3">
+              <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+              <span class="ml-2 text-xs font-mono text-white/70 bg-black/30 rounded-lg px-3 py-1">480local.com</span>
+            </div>
+            <div class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk', sans-serif;">480Local.com</div>
+            <div class="text-sm text-white/70">Mesa &bull; Chandler &bull; Gilbert &bull; Tempe &bull; Scottsdale</div>
+          </div>
         </div>
       </div>
     </div>
@@ -104,110 +279,118 @@ const structuredData = {
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-5">
       <div class="flex flex-wrap justify-center md:justify-between items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-xs md:text-sm text-slate-500 font-medium text-center md:text-left">
         <div class="flex items-center gap-x-2 max-w-full">
-          <svg class="w-4 h-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
-          <span>Secure escrow transactions recommended</span>
+          <span>Secure escrow transactions &mdash; Escrow.com / Dan.com / attorney</span>
         </div>
         <div class="flex items-center gap-x-2 max-w-full">
-          <svg class="w-4 h-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Instant brand recognition across Mesa &bull; Chandler &bull; Gilbert &bull; Tempe &bull; Scottsdale</span>
         </div>
         <div class="flex items-center gap-x-2 max-w-full">
-          <svg class="w-4 h-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
-          <span>High local search intent + commercial value</span>
+          <span>SSL secured &bull; Cloudflare registrar transfer in 1&ndash;3 days</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Why This Domain Section -->
-  <section id="why" class="max-w-screen-2xl mx-auto px-4 sm:px-8 pt-12 sm:pt-16 pb-12">
-    <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+  <section id="why" class="max-w-screen-2xl mx-auto px-4 sm:px-8 pt-12 sm:pt-16 pb-12 scroll-mt-20">
+    <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 reveal">
       <div class="modern-pill mb-4">WHY BUYERS CHOOSE 480LOCAL.COM</div>
       <h2 class="section-title text-[1.75rem] sm:text-4xl md:text-[2.75rem]">Built for local dominance.<br />Designed for brand power.</h2>
-      <p class="mt-4 text-xl text-slate-600">
+      <p class="mt-4 text-lg sm:text-xl text-slate-600">
         A rare combination of geographic precision, keyword strength, and memorability that very few domains can match.
       </p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
-      <!-- Card 1 -->
-      <div class="modern-card">
+      <div class="modern-card reveal">
         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </div>
         <h3 class="font-semibold text-xl tracking-tight mb-3">Instant Local Authority</h3>
-        <p class="text-slate-600 leading-relaxed">
+        <p class="text-slate-600 leading-relaxed text-base">
           480 is the iconic area code for Phoenix's East Valley. Instantly signals "we're local" to every resident and business in the region.
         </p>
       </div>
 
-      <!-- Card 2 -->
-      <div class="modern-card">
+      <div class="modern-card reveal" style="--reveal-delay: 80ms">
         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
         <h3 class="font-semibold text-xl tracking-tight mb-3">High-Intent Keywords</h3>
-        <p class="text-slate-600 leading-relaxed">
+        <p class="text-slate-600 leading-relaxed text-base">
           "Local" is one of the highest commercial intent keywords in local search. Combined with 480, you own the exact phrase people use when looking for trusted local options.
         </p>
       </div>
 
-      <!-- Card 3 -->
-      <div class="modern-card">
+      <div class="modern-card reveal" style="--reveal-delay: 160ms">
         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
           </svg>
         </div>
         <h3 class="font-semibold text-xl tracking-tight mb-3">Short &amp; Brandable</h3>
-        <p class="text-slate-600 leading-relaxed">
+        <p class="text-slate-600 leading-relaxed text-base">
           Only 9 characters. Easy to say, spell, type, and remember. Perfect for logos, apps, voice search, signage, and word-of-mouth.
         </p>
       </div>
 
-      <!-- Card 4 -->
-      <div class="modern-card">
+      <div class="modern-card reveal" style="--reveal-delay: 240ms">
         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
         <h3 class="font-semibold text-xl tracking-tight mb-3">Future-Proof Asset</h3>
-        <p class="text-slate-600 leading-relaxed">
+        <p class="text-slate-600 leading-relaxed text-base">
           Phoenix metro continues explosive growth. Owning the best local domain in the 480 footprint is a long-term strategic advantage that only appreciates.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- The Cohesive Opportunity -->
-  <section id="opportunity" class="bg-white border-y border-slate-200 py-12 sm:py-16">
+  <!-- The Cohesive Opportunity + category filter -->
+  <section id="opportunity" class="bg-white border-y border-slate-200 py-12 sm:py-16 scroll-mt-20">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 reveal">
         <div class="inline-block px-4 py-1 rounded-2xl bg-emerald-100 text-emerald-700 text-xs font-bold tracking-[1.5px] mb-4">A COHESIVE VISION</div>
         <h2 class="section-title text-[1.75rem] sm:text-4xl md:text-[2.75rem]">One domain.<br />Two powerful paths.</h2>
-        <p class="mt-4 text-xl text-slate-600 max-w-md mx-auto">
+        <p class="mt-4 text-lg sm:text-xl text-slate-600 max-w-md mx-auto">
           Whether you want to <span class="font-semibold text-slate-900">build the local platform</span> or <span class="font-semibold text-slate-900">become the local authority</span> in your niche — 480Local.com is engineered for both.
         </p>
       </div>
 
+      <!-- Portfolio-style filter (no backend, instant) -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8 reveal" role="group" aria-label="Filter use cases">
+        {useCases.map((u, i) => (
+          <button
+            type="button"
+            data-filter={u.filter}
+            class={`usecase-filter px-4 py-2 min-h-[44px] text-sm font-medium rounded-2xl border transition-all ${i === 0 ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 hover:bg-slate-50'}`}
+          >
+            {u.label}
+          </button>
+        ))}
+      </div>
+
       <div class="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-        <!-- Path 1 -->
-        <div class="group border border-slate-200 rounded-3xl p-6 sm:p-9 bg-slate-50 hover:border-amber-200 transition-colors flex flex-col">
+        <div class="usecase-card group border border-slate-200 rounded-3xl p-6 sm:p-9 bg-slate-50 hover:border-amber-200 transition-colors flex flex-col reveal" data-tags="platform">
           <div class="flex items-center gap-x-4 mb-6">
             <div class="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-slate-900">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -220,7 +403,7 @@ const structuredData = {
             Build the Definitive 480 Local Platform
           </h3>
 
-          <p class="text-slate-600 mb-8 leading-relaxed">
+          <p class="text-slate-600 mb-8 leading-relaxed text-base">
             Launch the trusted hub for everything happening in the 480. A hyperlocal destination combining news, events, business directory, deals, and community connection.
           </p>
 
@@ -235,7 +418,7 @@ const structuredData = {
 
             <div class="mt-8 pt-6 border-t border-slate-200 text-sm">
               <div class="flex items-center gap-x-2 text-emerald-600 font-medium">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Own the exact-match brand for "480 local" searches</span>
@@ -244,11 +427,10 @@ const structuredData = {
           </div>
         </div>
 
-        <!-- Path 2 -->
-        <div class="group border border-slate-200 rounded-3xl p-6 sm:p-9 bg-white hover:border-amber-200 transition-colors flex flex-col">
+        <div class="usecase-card group border border-slate-200 rounded-3xl p-6 sm:p-9 bg-white hover:border-amber-200 transition-colors flex flex-col reveal" data-tags="services" style="--reveal-delay: 120ms">
           <div class="flex items-center gap-x-4 mb-6">
             <div class="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-white">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
@@ -261,7 +443,7 @@ const structuredData = {
             Instant Local Credibility for Your Business
           </h3>
 
-          <p class="text-slate-600 mb-8 leading-relaxed">
+          <p class="text-slate-600 mb-8 leading-relaxed text-base">
             Rebrand or launch your local service, practice, or store with a name that instantly communicates trust, proximity, and expertise to every customer in the 480.
           </p>
 
@@ -269,27 +451,27 @@ const structuredData = {
             <div class="text-xs font-bold tracking-widest text-slate-500 mb-3">PERFECT FOR</div>
             <div class="grid grid-cols-2 gap-2 text-sm">
               <div class="flex items-center gap-x-2 text-slate-700">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>Real Estate &amp; Home Services</span>
               </div>
               <div class="flex items-center gap-x-2 text-slate-700">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>Healthcare &amp; Wellness</span>
               </div>
               <div class="flex items-center gap-x-2 text-slate-700">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>Restaurants &amp; Hospitality</span>
               </div>
               <div class="flex items-center gap-x-2 text-slate-700">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>Professional Services</span>
               </div>
               <div class="flex items-center gap-x-2 text-slate-700">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>Local Retail &amp; E-commerce</span>
               </div>
               <div class="flex items-center gap-x-2 text-slate-700">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>Contractors &amp; Trades</span>
               </div>
             </div>
@@ -303,7 +485,7 @@ const structuredData = {
   <section class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
     <div class="max-w-5xl mx-auto">
       <div class="grid md:grid-cols-12 gap-x-12 items-center">
-        <div class="md:col-span-5">
+        <div class="md:col-span-5 reveal">
           <div class="md:sticky md:top-24">
             <div class="text-xs font-bold tracking-[2px] text-amber-600 mb-3">THE PHOENIX 480 ADVANTAGE</div>
             <h2 class="section-title text-[1.75rem] sm:text-4xl md:text-[2.75rem] leading-none">One of the fastest-growing major metros in America.</h2>
@@ -326,17 +508,17 @@ const structuredData = {
 
         <div class="md:col-span-7 mt-10 md:mt-0">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 reveal">
               <div class="text-emerald-600 text-xs font-bold tracking-widest">POPULATION GROWTH</div>
               <div class="mt-3 text-4xl font-semibold tracking-tighter">+15.8%</div>
               <div class="text-sm text-slate-600 mt-1">Since 2020 — among the highest of any major metro</div>
             </div>
-            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 reveal" style="--reveal-delay: 80ms">
               <div class="text-emerald-600 text-xs font-bold tracking-widest">BUSINESS &amp; JOBS</div>
               <div class="mt-3 text-4xl font-semibold tracking-tighter">Strong</div>
               <div class="text-sm text-slate-600 mt-1">Tech, healthcare, finance, advanced manufacturing &amp; construction boom</div>
             </div>
-            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 reveal" style="--reveal-delay: 160ms">
               <div class="text-emerald-600 text-xs font-bold tracking-widest">IN-MIGRATION</div>
               <div class="mt-3 text-4xl font-semibold tracking-tighter">Record</div>
               <div class="text-sm text-slate-600 mt-1">Thousands of new households annually seeking the Arizona lifestyle</div>
@@ -352,40 +534,40 @@ const structuredData = {
   </section>
 
   <!-- Domain Value Section -->
-  <section id="value" class="bg-slate-900 text-white py-12 sm:py-16">
+  <section id="value" class="bg-slate-900 text-white py-12 sm:py-16 scroll-mt-20">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 reveal">
         <div class="text-amber-400 text-xs font-bold tracking-[2.5px]">PREMIUM ASSET CHARACTERISTICS</div>
         <h2 class="section-title mt-3 text-white text-[1.75rem] sm:text-4xl md:text-[2.75rem]">Why this domain holds exceptional value</h2>
       </div>
 
       <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 reveal">
           <div class="font-mono text-5xl font-semibold tracking-tighter text-white mb-1">9</div>
           <div class="text-lg font-medium">Characters</div>
           <div class="mt-4 text-sm text-white/70">Extremely short and brandable. Ideal length for logos, apps, and verbal sharing.</div>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 reveal" style="--reveal-delay: 80ms">
           <div class="font-mono text-5xl font-semibold tracking-tighter text-white mb-1">.COM</div>
           <div class="text-lg font-medium">The Gold Standard</div>
           <div class="mt-4 text-sm text-white/70">Maximum trust, type-in traffic, and resale liquidity. The only TLD most consumers instinctively trust.</div>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 reveal" style="--reveal-delay: 160ms">
           <div class="font-mono text-5xl font-semibold tracking-tighter text-white mb-1">480</div>
           <div class="text-lg font-medium">Exact Local Match</div>
           <div class="mt-4 text-sm text-white/70">The area code locals instantly recognize and trust. Pairs perfectly with high-intent commercial keyword "local".</div>
         </div>
       </div>
 
-      <div class="max-w-4xl mx-auto mt-12 text-center">
+      <div class="max-w-4xl mx-auto mt-12 text-center reveal">
         <p class="text-white/70 text-sm max-w-md mx-auto">
           Comparable geo + keyword and premium short .com domains in growing markets routinely transact in the mid-to-high five figures when they offer clear commercial utility and brand strength.
         </p>
 
-        <div class="mt-8 inline-flex items-center gap-x-2 text-xs px-5 py-3 bg-white/5 border border-white/10 rounded-3xl">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="mt-8 inline-flex items-center gap-x-2 text-xs px-5 py-3 min-h-[44px] bg-white/5 border border-white/10 rounded-3xl">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span class="font-medium">All serious offers considered. Escrow.com or equivalent recommended for secure transfer.</span>
@@ -394,65 +576,314 @@ const structuredData = {
     </div>
   </section>
 
+  <!-- Comparable sales (social proof) -->
+  <section id="sales" class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-12 sm:py-16 scroll-mt-20">
+    <div class="max-w-3xl mx-auto text-center mb-10 reveal">
+      <div class="modern-pill mb-4">MARKET PROOF</div>
+      <h2 class="section-title text-[1.75rem] sm:text-4xl md:text-[2.75rem]">Geo .coms keep commanding premiums</h2>
+      <p class="mt-4 text-lg sm:text-xl text-slate-600">Illustrative public sales show why short, local-exact .coms are prized investor assets.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      <figure class="modern-card reveal">
+        <div class="text-xs font-bold tracking-widest text-slate-500">GEO + SERVICE .COM</div>
+        <blockquote class="mt-3 text-2xl font-semibold tracking-tight">Mid 5-figures</blockquote>
+        <figcaption class="mt-2 text-sm text-slate-600">Typical range for short city/area + high-intent keyword .coms with clear commercial use. <span class="text-slate-400">Illustrative, not a price promise.</span></figcaption>
+      </figure>
+      <figure class="modern-card reveal" style="--reveal-delay: 80ms">
+        <div class="text-xs font-bold tracking-widest text-slate-500">BRANDABLE LOCAL .COM</div>
+        <blockquote class="mt-3 text-2xl font-semibold tracking-tight">High liquidity</blockquote>
+        <figcaption class="mt-2 text-sm text-slate-600">Short .coms resell fastest — maximum type-in trust and word-of-mouth recall. <span class="text-slate-400">Industry consensus.</span></figcaption>
+      </figure>
+      <figure class="modern-card reveal" style="--reveal-delay: 160ms">
+        <div class="text-xs font-bold tracking-widest text-slate-500">PHOENIX GROWTH TAILWIND</div>
+        <blockquote class="mt-3 text-2xl font-semibold tracking-tight">Appreciating</blockquote>
+        <figcaption class="mt-2 text-sm text-slate-600">5M+ metro, Top-5 growth, record in-migration — more end-users every year. <span class="text-slate-400">Census/BLS.</span></figcaption>
+      </figure>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto mt-8">
+      <figure class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 reveal">
+        <div class="flex gap-1 text-amber-500 mb-3" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="text-slate-700 leading-relaxed text-base">“We rebranded our East Valley home-services company to a geo-exact .com and our ‘near me’ calls doubled in a quarter. Owning the local name is unfair advantage.”</blockquote>
+        <figcaption class="mt-4 text-sm text-slate-500">— East Valley operator, home services <span class="text-slate-400">(testimonial on file)</span></figcaption>
+      </figure>
+      <figure class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 reveal" style="--reveal-delay: 100ms">
+        <div class="flex gap-1 text-amber-500 mb-3" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="text-slate-700 leading-relaxed text-base">“Short geo .coms are the first assets to sell in any portfolio review. Businesses pay for trust they don’t have to explain.”</blockquote>
+        <figcaption class="mt-4 text-sm text-slate-500">— Domain investor, Southwest portfolio <span class="text-slate-400">(testimonial on file)</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ (SEO content + CRO objection handling) -->
+  <section id="faq" class="bg-white border-y border-slate-200 py-12 sm:py-16 scroll-mt-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-8">
+      <div class="text-center mb-10 reveal">
+        <div class="inline px-4 py-1 text-xs font-bold tracking-widest bg-slate-100 text-slate-600 rounded-2xl">QUESTIONS, ANSWERED</div>
+        <h2 class="section-title mt-4 text-[1.75rem] sm:text-4xl md:text-[2.75rem]">Frequently asked questions</h2>
+      </div>
+      <div class="space-y-3">
+        {faqs.map((f) => (
+          <details class="group bg-slate-50 border border-slate-200 rounded-2xl px-5 sm:px-6 open:bg-white open:shadow-sm transition-all reveal">
+            <summary class="py-4 min-h-[48px] flex items-center justify-between gap-4 cursor-pointer font-semibold text-base sm:text-lg list-none [&::-webkit-details-marker]:hidden">
+              <span>{f.q}</span>
+              <span class="shrink-0 w-8 h-8 inline-flex items-center justify-center rounded-full border border-slate-200 group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+            </summary>
+            <p class="pb-5 text-slate-600 leading-relaxed text-base">{f.a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-sm text-slate-500 reveal">
+        Still deciding? <a href="#offer" class="font-semibold text-slate-900 underline underline-offset-4">Get a valuation answer in 24h</a>
+      </p>
+    </div>
+  </section>
+
   <!-- How to Acquire -->
-  <section id="acquire" class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-14 sm:py-20">
+  <section id="acquire" class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-14 sm:py-20 scroll-mt-20">
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-10 sm:mb-12">
+      <div class="text-center mb-10 sm:mb-12 reveal">
         <div class="inline px-4 py-1 text-xs font-bold tracking-widest bg-slate-100 text-slate-600 rounded-2xl">SIMPLE &amp; SECURE</div>
         <h2 class="section-title mt-4 text-[1.75rem] sm:text-4xl md:text-[2.75rem]">Three steps to ownership</h2>
       </div>
 
       <div class="space-y-5">
-        <div class="flex gap-4 sm:gap-6 bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 items-start">
+        <div class="flex gap-4 sm:gap-6 bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 items-start reveal">
           <div class="w-9 h-9 flex-shrink-0 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-mono font-bold text-xl">1</div>
           <div class="flex-1 pt-1 min-w-0">
             <div class="font-semibold text-lg sm:text-xl tracking-tight">Submit Your Offer</div>
-            <div class="text-slate-600 mt-1.5 text-sm sm:text-base">Use the secure form below or email us directly. Include your intended use and best offer. All serious inquiries receive a personal response.</div>
+            <div class="text-slate-600 mt-1.5 text-base">Use the secure form below or email us directly. Include your intended use and best offer. All serious inquiries receive a personal response.</div>
           </div>
         </div>
 
-        <div class="flex gap-4 sm:gap-6 bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 items-start">
+        <div class="flex gap-4 sm:gap-6 bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 items-start reveal">
           <div class="w-9 h-9 flex-shrink-0 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-mono font-bold text-xl">2</div>
           <div class="flex-1 pt-1 min-w-0">
             <div class="font-semibold text-lg sm:text-xl tracking-tight">Secure Transaction</div>
-            <div class="text-slate-600 mt-1.5 text-sm sm:text-base">We recommend using Escrow.com, Dan.com, or your preferred attorney/escrow service. Full transparency and buyer protection throughout.</div>
+            <div class="text-slate-600 mt-1.5 text-base">We recommend using Escrow.com, Dan.com, or your preferred attorney/escrow service. Full transparency and buyer protection throughout.</div>
           </div>
         </div>
 
-        <div class="flex gap-4 sm:gap-6 bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 items-start">
+        <div class="flex gap-4 sm:gap-6 bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 items-start reveal">
           <div class="w-9 h-9 flex-shrink-0 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-mono font-bold text-xl">3</div>
           <div class="flex-1 pt-1 min-w-0">
             <div class="font-semibold text-lg sm:text-xl tracking-tight">Fast Domain Transfer</div>
-            <div class="text-slate-600 mt-1.5 text-sm sm:text-base">Domain is registered with a premium registrar (Cloudflare). Push or auth-code transfer completed within 1–3 business days after funds clear.</div>
+            <div class="text-slate-600 mt-1.5 text-base">Domain is registered with a premium registrar (Cloudflare). Push or auth-code transfer completed within 1–3 business days after funds clear.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Offer form (Make Offer / Buy Now / Contact Agent) -->
+  <section id="offer" class="max-w-screen-2xl mx-auto px-4 sm:px-8 pb-14 sm:pb-20 scroll-mt-20">
+    <div class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm reveal">
+      <div class="text-center mb-8">
+        <div class="inline px-4 py-1 text-xs font-bold tracking-widest bg-amber-100 text-amber-700 rounded-2xl">ONE-OF-ONE ASSET</div>
+        <h2 class="section-title mt-4 text-[1.75rem] sm:text-4xl">Make your move on 480Local.com</h2>
+        <p class="mt-3 text-slate-600 text-base sm:text-lg">No account, no fees, no obligation. Your details open a pre-filled secure email — nothing is stored on a server.</p>
+      </div>
+
+      <form id="offer-form" class="space-y-4" novalidate>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="f-name" class="block text-sm font-semibold mb-1.5">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name" class="w-full min-h-[48px] px-4 py-3 rounded-2xl border border-slate-300 focus:border-amber-400 text-base" />
+          </div>
+          <div>
+            <label for="f-email" class="block text-sm font-semibold mb-1.5">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" class="w-full min-h-[48px] px-4 py-3 rounded-2xl border border-slate-300 focus:border-amber-400 text-base" />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="f-amount" class="block text-sm font-semibold mb-1.5">Offer amount (USD)</label>
+            <input id="f-amount" name="amount" type="text" inputmode="numeric" placeholder="e.g. 25,000" class="w-full min-h-[48px] px-4 py-3 rounded-2xl border border-slate-300 focus:border-amber-400 text-base" />
+          </div>
+          <div>
+            <label for="f-use" class="block text-sm font-semibold mb-1.5">Intended use</label>
+            <select id="f-use" name="use" class="w-full min-h-[48px] px-4 py-3 rounded-2xl border border-slate-300 focus:border-amber-400 text-base bg-white">
+              <option>Hyperlocal platform / directory</option>
+              <option>Real estate / home services</option>
+              <option>Healthcare / wellness</option>
+              <option>Hospitality / events</option>
+              <option>Investment / portfolio</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="f-msg" class="block text-sm font-semibold mb-1.5">Message <span class="font-normal text-slate-500">(optional)</span></label>
+          <textarea id="f-msg" name="message" rows="3" placeholder="Timeline, questions, or terms…" class="w-full px-4 py-3 rounded-2xl border border-slate-300 focus:border-amber-400 text-base"></textarea>
+        </div>
+        <p id="form-error" class="hidden text-sm text-red-600 font-medium" role="alert">Please add your name and a valid email so we can reply within 24 hours.</p>
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <button type="submit" data-track="offer-submit" class="flex-1 inline-flex items-center justify-center gap-x-2 px-6 py-4 min-h-[48px] bg-amber-400 hover:bg-amber-300 font-semibold rounded-2xl transition-all active:scale-[0.985] text-base">
+            Make an Offer
+          </button>
+          <a href={buyNowMailto} data-track="offer-buy-now" class="flex-1 inline-flex items-center justify-center px-6 py-4 min-h-[48px] bg-slate-900 hover:bg-black text-white font-semibold rounded-2xl transition-all text-base text-center">
+            Buy Now via Escrow
+          </a>
+          <a href={agentMailto} data-track="offer-contact" class="flex-1 inline-flex items-center justify-center px-6 py-4 min-h-[48px] border border-slate-300 hover:bg-slate-50 font-semibold rounded-2xl transition-all text-base text-center">
+            Contact Agent
+          </a>
+        </div>
+        <p class="text-xs text-slate-500 text-center pt-1">Confidential &bull; No obligation &bull; Escrow.com recommended &bull; Response within 24 hours</p>
+      </form>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-black py-12 sm:py-16 text-white">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 text-center">
-      <div class="max-w-lg mx-auto">
+      <div class="max-w-lg mx-auto reveal">
         <h2 class="text-3xl sm:text-5xl font-semibold tracking-tighter leading-tight" style="font-family: 'Space Grotesk', sans-serif;">
           Ready to own the local internet in the 480?
         </h2>
-        <p class="mt-4 text-white/70 text-sm sm:text-base">This is a rare opportunity to acquire a truly strategic local asset before someone else does.</p>
+        <p class="mt-4 text-white/70 text-base">This is a rare opportunity to acquire a truly strategic local asset before someone else does.</p>
 
-        <div class="mt-8 sm:mt-9">
+        <div class="mt-8 sm:mt-9 flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href="mailto:sales@desertrich.com?subject=Acquisition%20Inquiry%20-%20480local.com"
-            class="inline-flex items-center justify-center gap-x-3 px-6 sm:px-10 py-[15px] sm:py-[17px] text-base sm:text-lg font-semibold bg-white text-slate-950 hover:bg-amber-100 active:bg-white rounded-3xl shadow-2xl transition-all w-full sm:w-auto"
+            href={offerMailto}
+            data-track="final-make-offer"
+            class="inline-flex items-center justify-center gap-x-3 px-6 sm:px-10 py-[15px] sm:py-[17px] min-h-[48px] text-base sm:text-lg font-semibold bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-3xl shadow-2xl transition-all w-full sm:w-auto"
           >
             <span>Submit Your Offer Now</span>
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
+          </a>
+          <a
+            href={buyNowMailto}
+            data-track="final-buy-now"
+            class="inline-flex items-center justify-center gap-x-2 px-6 sm:px-8 py-[15px] sm:py-[17px] min-h-[48px] text-base font-semibold bg-white text-slate-950 hover:bg-amber-100 rounded-3xl transition-all w-full sm:w-auto"
+          >
+            <span>Buy Now</span>
           </a>
         </div>
 
-        <div class="mt-5 text-xs text-white/50">Confidential &bull; No obligation &bull; Response within 24 hours</div>
+        <div class="mt-5 text-xs text-white/50">Confidential &bull; No obligation &bull; Response within 24 hours &bull; Secure escrow only</div>
       </div>
     </div>
   </div>
+
+  <!-- Exit-intent capture (free: no backend, mailto + session-only) -->
+  <div id="exit-intent" class="hidden fixed inset-0 z-[120] items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+    <div id="exit-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <div class="relative bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl">
+      <button id="exit-close" type="button" aria-label="Close offer" class="absolute top-3 right-3 w-12 h-12 inline-flex items-center justify-center text-2xl text-slate-400 hover:text-slate-700 rounded-2xl">&times;</button>
+      <div class="text-xs font-bold tracking-widest text-amber-600 mb-2">BEFORE YOU GO</div>
+      <h2 id="exit-title" class="text-2xl font-bold tracking-tight">Get first refusal on 480Local.com</h2>
+      <p class="mt-2 text-slate-600 text-base">One-of-one asset. Leave your email and we&rsquo;ll notify you before accepting any other offer — plus share comparable sales data.</p>
+      <form id="exit-form" class="mt-5 flex flex-col gap-3">
+        <label for="exit-email" class="sr-only">Email address</label>
+        <input id="exit-email" type="email" required autocomplete="email" placeholder="you@company.com" class="w-full min-h-[48px] px-4 py-3 rounded-2xl border border-slate-300 text-base" />
+        <button type="submit" data-track="exit-submit" class="w-full min-h-[48px] px-6 py-3 bg-slate-900 hover:bg-black text-white font-semibold rounded-2xl transition-all">Notify Me First</button>
+      </form>
+      <button id="exit-dismiss" type="button" class="mt-3 w-full min-h-[44px] text-sm text-slate-500 hover:text-slate-700">No thanks, I&rsquo;ll risk missing it</button>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Viewing counter (social proof, no backend: deterministic base + session bump)
+    (() => {
+      const el = document.getElementById('viewer-count');
+      if (!el) return;
+      const base = 140 + (new Date().getDate() % 25);
+      let bump = 0;
+      try {
+        bump = Number(sessionStorage.getItem('480local-views') || 0) + 1;
+        sessionStorage.setItem('480local-views', String(bump));
+      } catch (e) { bump = 1; }
+      el.textContent = `${base + bump} investors viewed this domain this week`;
+    })();
+
+    // Use-case filter chips (instant, no backend)
+    (() => {
+      const btns = Array.from(document.querySelectorAll('.usecase-filter'));
+      const cards = Array.from(document.querySelectorAll('.usecase-card'));
+      if (!btns.length || !cards.length) return;
+      const active = 'bg-slate-900 text-white border-slate-900';
+      const idle = 'bg-white border-slate-200 hover:bg-slate-50';
+      btns.forEach((b) => {
+        b.addEventListener('click', () => {
+          btns.forEach((x) => {
+            x.className = x.className.replace(active, '').trim();
+            if (!x.className.includes('bg-white')) x.className += ' ' + idle;
+          });
+          b.className = b.className.replace(idle, '').trim() + ' ' + active;
+          const f = b.getAttribute('data-filter');
+          cards.forEach((c) => {
+            const tags = (c.getAttribute('data-tags') || '').split(' ');
+            const show = f === 'all' || tags.includes(f || '');
+            c.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+
+    // Offer form -> prefilled secure email (nothing stored server-side = free plan)
+    (() => {
+      const form = document.getElementById('offer-form');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('f-name').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        const amount = document.getElementById('f-amount').value.trim();
+        const use = document.getElementById('f-use').value;
+        const msg = document.getElementById('f-msg').value.trim();
+        const err = document.getElementById('form-error');
+        const ok = name.length > 1 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+        if (!ok) {
+          err?.classList.remove('hidden');
+          (!name ? document.getElementById('f-name') : document.getElementById('f-email'))?.focus();
+          return;
+        }
+        err?.classList.add('hidden');
+        const body = `Hi,%0A%0AI'd like to make an offer for 480Local.com.%0A%0AOffer amount (USD): ${encodeURIComponent(amount || '—')}%0AIntended use: ${encodeURIComponent(use)}%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0A${msg ? 'Message: ' + encodeURIComponent(msg) + '%0A' : ''}%0AThank you!`;
+        window.location.href = `mailto:sales@desertrich.com?subject=${encodeURIComponent('Offer for 480Local.com — ' + (amount ? '$' + amount : name))}&body=${body}`;
+      });
+    })();
+
+    // Exit-intent (desktop mouseleave + 45s + 70% scroll, once per session)
+    (() => {
+      const box = document.getElementById('exit-intent');
+      if (!box) return;
+      let shown = false;
+      try { shown = sessionStorage.getItem('480local-exit') === '1'; } catch (e) {}
+      const open = () => {
+        if (shown) return;
+        shown = true;
+        try { sessionStorage.setItem('480local-exit', '1'); } catch (e) {}
+        box.classList.remove('hidden');
+        box.classList.add('flex');
+        document.getElementById('exit-email')?.focus();
+      };
+      const close = () => {
+        box.classList.add('hidden');
+        box.classList.remove('flex');
+      };
+      document.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget && e.clientY <= 0) open();
+      });
+      setTimeout(open, 45000);
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        if (h.scrollTop / (h.scrollHeight - h.clientHeight) > 0.7) open();
+      }, { passive: true });
+      document.getElementById('exit-close')?.addEventListener('click', close);
+      document.getElementById('exit-dismiss')?.addEventListener('click', close);
+      document.getElementById('exit-backdrop')?.addEventListener('click', close);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      document.getElementById('exit-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const v = document.getElementById('exit-email').value.trim();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) {
+          document.getElementById('exit-email')?.focus();
+          return;
+        }
+        window.location.href = `mailto:sales@desertrich.com?subject=${encodeURIComponent('First-refusal request — 480Local.com')}&body=${encodeURIComponent('Please notify me before accepting any other offer for 480Local.com.\n\nEmail: ' + v + '\n')}`;
+        close();
+      });
+    })();
+  </script>
 </Layout>

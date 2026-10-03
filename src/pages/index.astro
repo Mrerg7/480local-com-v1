@@ -765,7 +765,7 @@ const useCases = [
     </div>
   </div>
 
-  <!-- Exit-intent capture (free: no backend, mailto + session-only) -->
+  <!-- Exit-intent capture (free: no backend, mailto + 14-day local snooze) -->
   <div id="exit-intent" class="hidden fixed inset-0 z-[120] items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
     <div id="exit-backdrop" class="absolute inset-0 bg-black/60"></div>
     <div class="relative bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl">
@@ -844,16 +844,39 @@ const useCases = [
       });
     })();
 
-    // Exit-intent (desktop mouseleave + 45s + 70% scroll, once per session)
+    // Exit-intent (engagement-gated: genuine leave signals only, 14-day snooze).
+    // Triggers: desktop mouseleave-top after 20s dwell, OR 60%+ scroll depth
+    // after 30s dwell. No timed auto-popup. Suppressed when the offer form is
+    // on screen, after any offer/buy CTA click, or after form submission.
     (() => {
       const box = document.getElementById('exit-intent');
       if (!box) return;
+      const KEY = '480local-exit-v1';
+      const DONE = '480local-converted';
+      const SNOOZE_MS = 14 * 24 * 60 * 60 * 1000;
+      const t0 = Date.now();
+      const dwell = () => Date.now() - t0;
       let shown = false;
-      try { shown = sessionStorage.getItem('480local-exit') === '1'; } catch (e) {}
+
+      const suppressed = () => {
+        if (shown) return true;
+        try {
+          if (localStorage.getItem(DONE) === '1') return true;
+          const last = Number(localStorage.getItem(KEY) || 0);
+          if (last && Date.now() - last < SNOOZE_MS) return true;
+        } catch (e) {}
+        return false;
+      };
+      const offerVisible = () => {
+        const offer = document.getElementById('offer');
+        if (!offer) return false;
+        const r = offer.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+      };
       const open = () => {
-        if (shown) return;
+        if (suppressed() || document.hidden || offerVisible()) return;
         shown = true;
-        try { sessionStorage.setItem('480local-exit', '1'); } catch (e) {}
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
         box.classList.remove('hidden');
         box.classList.add('flex');
         document.getElementById('exit-email')?.focus();
@@ -862,18 +885,36 @@ const useCases = [
         box.classList.add('hidden');
         box.classList.remove('flex');
       };
+      const markConverted = () => {
+        try { localStorage.setItem(DONE, '1'); } catch (e) {}
+      };
+
+      // Genuine exit signal: pointer leaves viewport top (desktop), min 20s dwell
       document.addEventListener('mouseout', (e) => {
-        if (!e.relatedTarget && e.clientY <= 0) open();
+        if (!e.relatedTarget && e.clientY <= 0 && dwell() >= 20000) open();
       });
-      setTimeout(open, 45000);
+      // Mobile fallback: deep scroll + real dwell, throttled via rAF flag
+      let ticking = false;
       window.addEventListener('scroll', () => {
-        const h = document.documentElement;
-        if (h.scrollTop / (h.scrollHeight - h.clientHeight) > 0.7) open();
+        if (ticking || suppressed()) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          const h = document.documentElement;
+          const max = h.scrollHeight - h.clientHeight;
+          if (max > 0 && h.scrollTop / max > 0.6 && dwell() >= 30000) open();
+        });
       }, { passive: true });
+
+      // Any purchase-path engagement = no popup needed
+      document.querySelectorAll('[data-track*="offer"], [data-track*="buy"]').forEach((el) => {
+        el.addEventListener('click', markConverted);
+      });
       document.getElementById('exit-close')?.addEventListener('click', close);
       document.getElementById('exit-dismiss')?.addEventListener('click', close);
       document.getElementById('exit-backdrop')?.addEventListener('click', close);
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      document.getElementById('offer-form')?.addEventListener('submit', markConverted);
       document.getElementById('exit-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const v = document.getElementById('exit-email').value.trim();
@@ -881,6 +922,7 @@ const useCases = [
           document.getElementById('exit-email')?.focus();
           return;
         }
+        markConverted();
         window.location.href = `mailto:sales@desertrich.com?subject=${encodeURIComponent('First-refusal request — 480Local.com')}&body=${encodeURIComponent('Please notify me before accepting any other offer for 480Local.com.\n\nEmail: ' + v + '\n')}`;
         close();
       });

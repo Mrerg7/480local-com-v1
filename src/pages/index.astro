@@ -50,6 +50,13 @@ const structuredData = {
         url: 'https://480local.com/#offer',
         availability: 'https://schema.org/InStock',
         priceCurrency: 'USD',
+        price: '50000',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          minPrice: '50000',
+          maxPrice: '99999',
+          priceCurrency: 'USD',
+        },
         businessFunction: 'https://purl.org/goodrelations/v1#Sell',
         seller: { '@id': 'https://480local.com/#org' },
         description: 'All serious offers considered. Secure transfer via Escrow.com or equivalent.',
